@@ -12,8 +12,19 @@ $mensaje = "hola soy ".$nombres." ".$apellidos
 return $mensaje;
 }
 
+function calcular($operador,$numero1,$numero2){
+    if($operador=="+")
+        return $numero1+$numero2;
+    if($operador=="-")
+        return $numero1-$numero2;
+    if($operador=="*")
+        return $numero1*$numero2;
+    if($operador=="/")
+        return $numero1/$numero2;
+}
 
 echo obtenerSaludo("Andres");
 echo mostrarDatos("Andres","Herbas",
-"backend developer web","tercer semestre");
+"backend developer web","tercer semestre")."\n";
+echo "El total de la suma es : ".calcular("+",10,34);
 ?>
