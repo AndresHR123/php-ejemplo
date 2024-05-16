@@ -2,13 +2,13 @@
     
     echo "ingrese un numero : \n 1=ROJO, 2=AMARILLO 3=VERDE \n";
     $numero=fgets (STDIN);
-    if ($numero = 1) {
+    if ($numero == 1) {
         echo "¡pare!";
     }
-    elseif ($numero = 2) {
+    elseif ($numero == 2) {
         echo "ESPERA";
     }
-    elseif ($numero = 3) {
+    elseif ($numero == 3) {
         echo "AVANZA";
     }
 echo "\n-------------------------------------------\n";
