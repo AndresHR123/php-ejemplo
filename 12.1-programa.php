@@ -21,7 +21,7 @@
             $resultado = $calculadora->sumar();
             echo "\nLA SUMA ES :".$resultado;
             break;
-
+// preparando....
         case 2:
             echo "ESCRIBA EL PRIMER NUMERO :";
             $numero1 = fgets (STDIN);
