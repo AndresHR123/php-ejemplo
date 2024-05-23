@@ -13,15 +13,43 @@ class Animal {
     $this->archivoSonido = $archivoSonido1;
     }
     public function obtenerInformacion() {
-        $colortext=$this->color == "Verde" ? "\033[32m" : "";
-        $mensaje ="Nombre : ".$this->nombre." \n".
+
+        if ($this->color == "Verde") {
+            $colortext=$this->color == "Verde" ? "\033[32m" : "";
+            $mensaje ="Nombre : ".$this->nombre." \n".
+        
+            "Color : ".$colortext.$this->color."\033[0m"."\n".
+
+            "En Extinción ? : ".($this->estaExtincion ? "Si" : "No");
+        return $mensaje;
+        }
+        elseif ($this->color == "Rojo") {
+            $colortext=$this->color == "Rojo" ? "\033[31m" : "";
+
+           $mensaje ="Nombre : ".$this->nombre." \n".
+        
+              "Color : ".$colortext.$this->color."\033[0m"."\n".
+
+           "En Extinción ? : ".($this->estaExtincion ? "Si" : "No");
+        return $mensaje;
+        }
+        elseif ($this->color == "Amarillo") {
+            $colortext=$this->color == "Amarillo" ?"[\033[33m" :"";
+
+            $mensaje ="Nombre : ".$this->nombre." \n".
+        
          "Color : ".$colortext.$this->color."\033[0m"."\n".
+
          "En Extinción ? : ".($this->estaExtincion ? "Si" : "No");
         return $mensaje;
+            
+        }
+        
+        
     }
 
     public function hacerSonido(){
-        $audiofile="c:\\xampp\\htdocs\\Andres\\".$this->archivoSonido;
+        $audiofile="c:\\xampp\\htdocs\\Andres\\php-ejemplo\\".$this->archivoSonido;
         shell_exec("start wmplayer ".escapeshellarg($audiofile));
     }
 }
@@ -31,5 +59,20 @@ class Animal {
             return $sonido;
         }
     }
+
+    class Gato extends Animal {
+        public function hacerSonido($sonido=""){
+            parent::hacerSonido();
+            return $sonido;
+
+    }
+}
+    class Pollo extends Animal {
+        public function hacerSonido($sonido=""){
+            parent::hacerSonido();
+            return $sonido;
+
+}
+}
 
 ?>
