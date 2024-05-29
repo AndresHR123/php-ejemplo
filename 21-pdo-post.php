@@ -24,6 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Garraspera = $Garraspera == "" ? "0": $Garraspera;
     $fecha = $_POST['fecha'];
 
+    //requerimiento
+    if (ctype_upper($nombre) || ctype_upper($apellido)) {
+    } else {
+        echo "EL NOMBRE Y APELLIDO DEBEN SER EN MAYUSCULA\n";
+    }
+
+    
     if (empty($nombre) || empty($apellido) || empty($edad) || empty($talla) || empty($peso) ) {
     echo "Todos los campos son obligatorios.";
     }
@@ -40,26 +47,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password ="root";
     $dbname = "covid";
     try{
+
         $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
-        
         $conn->beginTransaction();
         $sql="INSERT INTO `pacientes` (`nombres`, `apellidos`,
-        `edad`, `talla_m`, `peso_kg`, `sintoma_tos" ,`sintoma_fiebre`, `sintoma disnea`, `sintoma_dolormuscular`,
+        `edad`, `talla_m`, `peso_kg`, `sintoma_tos` ,
+        `sintoma_fiebre`, `sintoma_disnea`, `sintoma_dolormuscular`,
         `sintoma_gripe`, `sintoma_presionalta`, `sintoma_fatiga`,
-        `sintoma_garraspera`, `ultima_fecha_vacunacion`, `resultado`) VALUES ('$nombre', '$apellido', $edad, $talla, $peso,
-            '$tos', '$fiebre', '$disnea', '$dolor_muscular', '$gripe',
-        '$Presion_alta', '$Fatiga', '$Garraspera', '$fecha', '$resultado');";
-
+        `sintoma_garraspera`, `ultima_fecha_vacunacion`, `resultado`)
+        VALUES ('$nombre', '$apellido', '$edad', '$talla', '$peso',
+        '$tos', '$fiebre', '$disnea', '$dolor_muscular', '$gripe'
+        , '$Presion_alta', '$Fatiga', '$Garraspera', '$fecha', '$resultado');";
+    
     $conn->exec($sql);
     $conn->commit();
     echo "Fue registrado correctamente.";
     }
-    catch(Exception $e) {
-        echo "Error : ".$e->getMessage();
+    
+    
+    catch(Exception $e){
+    
+    echo "Error: ".$e->getMessage();
     }
-
-
-}
-
-
+    }
 ?>

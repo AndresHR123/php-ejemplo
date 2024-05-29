@@ -5,19 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EL PRIMER HOLA MUNDO</title>
 </head>
+<script>
+
+function verificarMayuscula(input) {
+  var mayuscula = input.value === input.value.toUpperCase();
+  if (!mayuscula) {
+    alert("Por favor, ingresa solo letras mayúsculas en nombres y apellidos");
+    input.value = '';
+  }
+}
+</script>
+
 <body>
     <h1>Registro de Paciente</h1>
     <form id="formulario" action="21-pdo-post.php" method="post">
+        
         <label for="nombre">Nombres: </label>
-        <input type="text" id="nombre" name="nombre" required><br>
+        <input type="text" id="nombre" name="nombre" required onblur="verificarMayuscula(this)"><br>
         <label for= "apellido">Apellidos: </label>
-        <input type="text" id="apellido" name="apellido"><br>
+        <input type="text" id="apellido" name="apellido" required onblur="verificarMayuscula(this)" ><br>
         <label for="edad">Edad: </label>
-        <input type="text" id="edad" name="edad" required /><br>
+        <input type="text" id="edad" name="edad" required  /><br>
         <label for="talla">Talla(cm): </label>
         <input type="text" id="talla" name="talla" required /><br>
         <label for="peso">Peso (kg):</label>
-        <input type="text" id="peso" name="peso"><br> 
+        <input type="text" id="peso" name="peso" required><br> 
         <h2><u>Sintomas</u></h2>
         <input type="checkbox" name="fiebre" id="fiebre">
         <label for="fiebre">Fiebre</label><br>
