@@ -5,16 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EL PRIMER HOLA MUNDO</title>
 </head>
-<script>
-
-function verificarMayuscula(input) {
-  var mayuscula = input.value === input.value.toUpperCase();
-  if (!mayuscula) {
-    alert("Por favor, ingresa solo letras mayúsculas en nombres y apellidos");
-    input.value = '';
-  }
-}
-</script>
 
 <body>
     <h1>Registro de Paciente</h1>

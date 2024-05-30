@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (ctype_upper($nombre) || ctype_upper($apellido)) {
     } else {
         echo "EL NOMBRE Y APELLIDO DEBEN SER EN MAYUSCULA\n";
+
     }
 
     
@@ -42,10 +43,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else {
         $resultado ="0";
     }
-    $servername = "localhost";
+    $servername = "local+host";
     $username = "root";
     $password ="root";
     $dbname = "covid";
+    //conexion a mysql
     try{
 
         $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
