@@ -15,15 +15,13 @@ function buscarPacientes() {
             pacientes.forEach(item => {
                 agregarFilas("#tabla",item);
             });
-
+ 
         }
     })
-
-
+ 
+ 
     return;
 }
-
-
 function agregarFilas(id,paciente) {
     const html=
     "<tr>"+
@@ -34,7 +32,36 @@ function agregarFilas(id,paciente) {
     "<td>"+paciente.sintoma_tos+"</td>"+
     "<td>"+paciente.sintoma_fiebre+"</td>"+
     "<td>"+paciente.sintoma_disnea+"</td>"+
-    "<td><button type='button'>Editar</button></td>"+
+    "<td><button type='button' onclick=editar('"+paciente.nombres+"','"+paciente.edad+"');>Editar</button></td>"+
     "</tr>";
     $(id+" tr:last").after(html);
+}
+ 
+function editar(nombres,edad) {
+    $('#exampleModal').modal('show');    
+    $("#nombre2").val(nombres);
+}
+
+
+function actualizar() {
+    const $nombre = $("#nombre2").val();
+   
+    let datos ={
+        nombre : $nombre
+    };
+    $.ajax({
+        url :"26.1-update-ajax-pdo.php",
+        type : "post",
+        data : datos,
+        success : function(result) {              
+            alert("Se guardo los datos correctamente de "+result);            
+        }
+    })
+ 
+ 
+    return;
+}
+ 
+function cancelar() {
+    $('#exampleModal').modal('hide');    
 }

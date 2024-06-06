@@ -35,19 +35,21 @@
     </button>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Formulario</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <label for="name" class="form-label">Nombre:</label>
-                    <input type="text" class="form-control" id="name" name="name"/>
-                </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Formulario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="name" class="form-label">Nombre: </label>
+                <input type="text" class="form-control" id="nombre2" name="nombre2"/>
+                <button type="button" class="btn-accept" onclick="actualizar();">Guardar</button>&nbsp;
+                <button type="button" class="btn-warning" onclick="cancelar();">Cancelar</button>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
