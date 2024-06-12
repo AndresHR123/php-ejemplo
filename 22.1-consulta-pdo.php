@@ -1,40 +1,74 @@
 <?php
-    if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["search_query"])) {
-        $search_query = $_GET["search_query"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recibir los parámetros de búsqueda del formulario
+    $nombre = $_POST['nombre'];
+    // Otros parámetros de búsqueda aquí
 
-        $servername = "localhost";
-        $username = "root";
-        $password = "root";
-        $dbname = "covid";
+    // Conectar a la base de datos
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "covid";
 
-        try {
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $conn->prepare("SELECT * FROM pacientes WHERE nombres LIKE :search_query");
-            $stmt->bindValue(':search_query', '%' . $search_query . '%', PDO::PARAM_STR);
-            $stmt->execute();
-
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo "<tr>";
-                echo "<td>".$row["nombres"]."</td>";
-                echo "<td>".$row["edad"]."</td>";
-                echo "<td>".$row["talla_m"]."</td>";
-                echo "<td>".$row["peso_kg"]."</td>";
-                echo "<td>".($row["sintoma_tos"]==1 ? "Si" : "No")."</td>";
-                echo "<td>".($row["sintoma_fiebre"]==1 ? "Si" : "No")."</td>";
-                echo "<td>".($row["sintoma_disnea"]==1 ? "Si" : "No")."</td>";
-                echo "<form action='23.1-consulta-pdo.php' method='post'>";
-                echo "<td> <button> type='submit'>Editar</button><button>Eliminar</button></form></td>";
-                
-
-                echo "</tr>";
-            }
-        } catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
+        // Construir la consulta SQL dinámicamente según los parámetros de búsqueda proporcionados
+        $sql = "SELECT * FROM pacientes WHERE 1=1";
+        if (!empty($nombre)) {
+            $sql .= " AND nombres = '$nombre'";
         }
-    } else {
-        echo "<tr><td colspan='8'>No se ha realizado ninguna búsqueda.</td></tr>";
-    }
+        // Agregar condiciones para otros campos de búsqueda aquí
 
+        // Ejecutar la consulta
+        $stmt = $conn->query($sql);
+        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Mostrar los resultados
+        if (count($resultados) > 0) {
+            echo "<h2>Resultados de la búsqueda:</h2>";
+            echo "<tr>
+            <th>Paciente</th>
+            <th>Edad</th>
+            <th>Talla</th>
+            <th>Peso</th>
+            <th>Tos</th>
+            <th>Fiebre</th>
+            <th>Disnea</th>
+            <th>Acciones</th>
+        </tr>";
+            foreach ($resultados as $resultado) {
+                
+            
+                echo "<table border='1' style='border-collapse: collapse;'>"; 
+                echo "<tr>
+            <th>Paciente</th>
+            <th>Edad</th>
+            <th>Talla</th>
+            <th>Peso</th>
+            <th>Tos</th>
+            <th>Fiebre</th>
+            <th>Disnea</th>
+            <th>Acciones</th>
+        </tr>";   
+                echo "<tr>";
+                    echo "<td>".$resultado["nombres"]."</td>";
+                    echo "<td>".$resultado["edad"]."</td>";
+                    echo "<td>".$resultado["talla_m"]."</td>";
+                    echo "<td>".$resultado["peso_kg"]."</td>";
+                    echo "<td>".($resultado["sintoma_tos"]==1 ? "Si" : "No")."</td>";
+                    echo "<td>".($resultado["sintoma_fiebre"]==1 ? "Si" : "No")."</td>";
+                    echo "<td>".($resultado["sintoma_disnea"]==1 ? "Si" : "No")."</td>";
+                    echo "<td> <button>Editar</button><button>Eliminar</button></td>";
+                    echo "</tr>";
+                    echo "</table>";
+            }
+        } else {
+            echo "No se encontraron resultados.";
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
 ?>

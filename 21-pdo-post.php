@@ -43,9 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else {
         $resultado ="0";
     }
-    $servername = "local+host";
+    $servername = "localhost";
     $username = "root";
-    $password ="root";
+    $password ="";
     $dbname = "covid";
     //conexion a mysql
     try{
