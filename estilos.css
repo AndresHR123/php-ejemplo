@@ -1,0 +1,47 @@
+h2 {
+    color: blue; 
+}
+
+h3 {
+    color: green; 
+}
+h4 {
+    color: red; 
+}
+
+.btn-primary {
+    background-color: blue; /* Cambiar el color de fondo del botón primario a azul */
+    color: white; /* Cambiar el color del texto del botón primario a blanco */
+}
+
+.btn-secondary {
+    background-color: gray; /* Cambiar el color de fondo del botón secundario a gris */
+    color: white; /* Cambiar el color del texto del botón secundario a blanco */
+}
+
+
+#tabla {
+    border-collapse: collapse; /* Colapsar los bordes de la tabla */
+    width: 50%; /* Ancho de la tabla */
+}
+
+/* Estilos para las celdas de la tabla */
+#tabla td, #tabla th {
+    border: 1px solid #dddddd; /* Borde de las celdas */
+    padding: 8px; /* Espaciado interno de las celdas */
+    text-align: left; /* Alineación del texto a la izquierda */
+}
+
+/* Estilos para las filas impares de la tabla */
+#tabla tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Color de fondo para filas impares */
+}
+
+/* Estilos para los encabezados de la tabla */
+#tabla th {
+    padding-top: 12px; /* Espaciado superior */
+    padding-bottom: 12px; /* Espaciado inferior */
+    text-align: left; /* Alineación del texto a la izquierda */
+    background-color: #4CAF50; /* Color de fondo verde para encabezados */
+    color: white; /* Color del texto blanco para encabezados */
+}
