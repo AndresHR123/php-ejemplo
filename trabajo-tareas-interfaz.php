@@ -3,8 +3,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Tareas del Equipo</title>
+    <link rel="stylesheet" type="text/css" href="estilos.css">
 </head>
 <body>
+    <div>
     <h2>Registrar Tareas del EQUIPO</h2>    
     <form action="trabajo-registrar.php" method="POST">
         <label for="tarea">Tarea:</label><br>
@@ -13,7 +15,7 @@
         <input type="checkbox" id="realizada" name="realizada" value="1"><br><br>
         <input type="submit" value="Registrar Tarea">
     </form>
-
+    </div>
 
     <h3>BUSCAR TAREAS</h3> 
     <input type="text" placeholder="Escribe aqui" name="nombre" id="nombre" /><br>
@@ -65,6 +67,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"

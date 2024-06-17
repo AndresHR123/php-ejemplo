@@ -26,11 +26,31 @@ $options->set('isHtml5ParserEnabled', true);
 $options->set('isRemoteEnabled', true);
 
 $dompdf = new Dompdf($options);
-$dompdf->loadHtml('<h1>Informe de Tareas</h1><br>');
-
-// Establecer el título del documento
-$dompdf->set_option('defaultFont', 'Arial');
-$dompdf->setPaper('A4', 'portrait');
+$html = '
+    <html>
+    <head>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            table, th, td {
+                border: 1px solid black;
+                padding: 8px;
+            }
+            th {
+                text-align: left;
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 style="text-align: center;">Informe de Tareas</h1>
+        <table>
+            <tr>
+                <th>Nombre de la Tarea</th>
+                <th>Completada</th>
+            </tr>';
 
 // Contenido del informe
 if ($resultado->num_rows > 0) {
@@ -38,13 +58,28 @@ if ($resultado->num_rows > 0) {
         $nombre_tarea = $fila['nombre'];
         $completada = $fila['completada'] ? 'Sí' : 'No';
         
-        // Agregar datos al informe
-        $dompdf->loadHtml('<p>Tarea: ' . $nombre_tarea . ' - Completada: ' . $completada . '</p>');
+        // Agregar fila de la tabla para cada tarea
+        $html .= '
+            <tr>
+                <td>' . htmlspecialchars($nombre_tarea) . '</td>
+                <td>' . htmlspecialchars($completada) . '</td>
+            </tr>';
     }
 } else {
-    $dompdf->loadHtml('<p>No hay tareas registradas.</p>');
+    // En caso de no haber tareas registradas
+    $html .= '
+            <tr>
+                <td colspan="2">No hay tareas registradas.</td>
+            </tr>';
 }
 
+// Cerrar la tabla y el HTML
+$html .= '
+        </table>
+    </body>
+    </html>';
+
+$dompdf->loadHtml($html);
 // Renderizar el PDF
 $dompdf->render();
 

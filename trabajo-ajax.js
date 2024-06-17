@@ -23,16 +23,22 @@ function buscarTareas() {
     return;
 }
 
-function agregarFilas(id,tarea) {
-    const html=
-    "<tr>"+
-    "<td>"+tarea.id+"</td>"+
-    "<td>"+tarea.nombre+"</td>"+
-    "<td>"+tarea.completada+"</td>"+
-    "<td><button type='button' onclick=editar('"+tarea.id+"','"+tarea.nombre+"','"+tarea.completada+"');>Editar</button></td>"+
-    "<td><button type='button' onclick=eliminar('"+tarea.id+"','"+tarea.nombre+"');>Eliminar</button></td>"+
-    "</tr>";
-    $(id+" tr:last").after(html);
+function agregarFilas(id, tarea) {
+    // Definir el símbolo según el valor de tarea.completada
+    let completadaSymbol = tarea.completada == "1" ? "✔️" : "❌";
+
+    // Construir el HTML de la fila con el símbolo correspondiente
+    const html =
+        "<tr>" +
+        "<td>" + tarea.id + "</td>" +
+        "<td>" + tarea.nombre + "</td>" +
+        "<td>" + completadaSymbol + "</td>" + // Mostrar el símbolo en lugar de 1 o 0
+        "<td><button type='button' onclick=editar('" + tarea.id + "','" + tarea.nombre + "','" + tarea.completada + "');>Editar</button></td>" +
+        "<td><button type='button' onclick=eliminar('" + tarea.id + "','" + tarea.nombre + "');>Eliminar</button></td>" +
+        "</tr>";
+
+    // Insertar la fila en la tabla
+    $(id + " tr:last").after(html);
 }
 //////
 function editar(id, nombre, completada) {
