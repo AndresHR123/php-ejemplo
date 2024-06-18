@@ -19,7 +19,7 @@ function iniciarSesion() {
             // Manejar la respuesta del servidor
             if (response.status === "success") {
                 alert("¡Sesión iniciada correctamente!");
-                window.location.href = "trabajo-tareas-interfaz.php"; // Redirigir a la página de trabajo
+                window.location.href = "../modelo/trabajo-tareas-interfaz.php"; // Redirigir a la página de trabajo
             } else {
                 alert(response.message); // Mostrar mensaje de error si falla la autenticación
             }

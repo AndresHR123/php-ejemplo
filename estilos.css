@@ -1,20 +1,39 @@
+body{
+    background-color: #dcdcdc;
+}
 
+
+.center-content {
+
+
+    display: flex;
+    
   
-  body {
-    background: #ffffff;
-    padding: 10px;
-    margin: auto;
-    margin-top: 100px;
-    border-radius: 4px;
+    flex-direction: column;
+  
+    align-items: center;
+  
+    justify-content: center;
+  
+    height: 15vh; /* Ajusta la altura según tu necesidad */
+  
+    
+  
   }
 
-h2 {
-    color: blue; 
+h2 { display: flex;
+  
+    flex-direction: column;
+  
+    align-items: center;
+  
+    justify-content: center;
+    color: rgb(27, 17, 17); 
 }
 
 h3 {
     
-    color: green; 
+    color: rgb(0, 0, 0); 
 }
 label{
     color: red; 
@@ -36,6 +55,7 @@ h4 {
 
 
 #tabla {
+    background-color: #dddddd;
     padding: 10px;
     margin: auto;
     margin-top: 100px;

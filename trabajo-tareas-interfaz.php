@@ -6,8 +6,9 @@
     <link rel="stylesheet" type="text/css" href="estilos.css">
 </head>
 <body>
-    <div>
-    <h2>Registrar Tareas del EQUIPO</h2>    
+    <h2>TAREAS DEL EQUIPO "______"</h2>  
+    <div class = "center-content"> 
+    <h3>Registrar tareas</h3> 
     <form action="trabajo-registrar.php" method="POST">
         <label for="tarea">Tarea:</label><br>
         <input type="text" id="tarea" name="tarea" required ><br><br>
@@ -16,10 +17,11 @@
         <input type="submit" value="Registrar Tarea">
     </form>
     </div>
-
-    <h3>BUSCAR TAREAS</h3> 
+    <div class = "center-content"> 
+    <h3>Buscar tareas</h3> 
     <input type="text" placeholder="Escribe aqui" name="nombre" id="nombre" /><br>
     <button type="button" onclick="buscarTareas();">Buscar</button>
+    </div>
     <table style="border: 1px solid black;" id="tabla">
         <tr>
             <td>id</td>
@@ -29,15 +31,16 @@
             <td>Accion</td>            
         </tr>          
     </table>
-
     <script type="text/javascript"
     src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="trabajo-ajax.js"></script>
-
+    <div class = "center-content"> 
     <form action="generar_informe.php" method="post">
         <input type="submit" value="Generar Informe en PDF">
     </form>
+    </div>
+
 
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"

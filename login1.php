@@ -12,8 +12,8 @@
 	<div class="form-register">
 	<h1>Inicie Secion </h1><br>
         <form action="login2.php" method="post">
-		<label>Usuario: <input class="controls" type="text" id="username" name="username"></label><br>
-		<label>Contraseña: <input class="controls" type="password" id="password" name="password"></label><br><br>
+		<label>Usuario: <input class="controls" type="text" id="username" name="username" required></label><br>
+		<label>Contraseña: <input class="controls" type="password" id="password" name="password" required></label><br><br>
 		</label><br><br>
 		</label><br><br>
     <input class="botons" type="submit" value="Iniciar sesión">
