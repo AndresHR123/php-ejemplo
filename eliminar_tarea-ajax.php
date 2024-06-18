@@ -12,7 +12,7 @@ $id = $_POST["id"];
 $sql = "DELETE FROM tareas WHERE id = '$id'";
 //
 if ($conexion->query($sql) === TRUE) {
-    echo "Tarea actualizada correctamente";
+    echo "Tarea eliminada correctamente";
 } else {
     echo "Error al actualizar la tarea: " . $conexion->error;
 }
