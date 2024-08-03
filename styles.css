@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.rectangulo {
+    width: 200px; 
+    height: 100px; 
+    background-color: green; 
+    border: 5px solid black; 
+    border-radius: 20px; 
+}
+
+.boton {
+    padding: 10px 20px;
+    background-color: green;
+    border: 5px solid black; 
+    border-radius: 10px; 
+    color: white; 
+    font-size: 16px; 
+    display: inline-block; /* Permite ajustar el tamaño del botón */
+    transition: background-color 0.3s, transform 0.3s; /* Animaciones suaves */
+}
+
+.boton:hover {
+    background-color: rgb(88, 35, 195);
+    transform: scale(1.05); /* Escala ligeramente el botón */
+}
